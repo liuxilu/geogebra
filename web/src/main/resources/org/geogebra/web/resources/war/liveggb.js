@@ -93,8 +93,8 @@
             var definition = this.api.getCommandString(label);
             console.log(definition);
             if (definition) {
-                console.log("full "+this.api.getAlgorithmXML(label) );
-                this.sendEvent("evalXML", this.api.getAlgorithmXML(label) );
+                console.log("full "+this.api.getAlgorithmXML(label));
+                this.sendEvent("evalXML", this.api.getAlgorithmXML(label));
             } else {
                 this.sendEvent("evalXML", xml);
             }
@@ -181,6 +181,22 @@
                     //console.log(xml);
                     this.sendEvent("setXML", xml);
                     break;
+
+				case "addSlide":
+					console.log(event[0], "add new slide");
+					this.sendEvent("addSlide");
+					break;
+
+                case "removeSlide":
+					console.log(event[0], "page " + event[2] + " deleted");
+					this.sendEvent("removeSlide", event[2]);
+					break;
+
+				case "selectSlide":
+					console.log(event[0], "select page " + event[2]);
+					this.sendEvent("selectSlide", event[2]);
+					break;
+
                 default:
                     console.log("unhandled event ", event[0], event);
 
@@ -217,9 +233,16 @@
                     target.unregisterListeners();
                     target.api.setEditorState(last.content, last.label);
                     target.registerListeners();
-                } else  if (last.type == "addImage") {
+                } else if (last.type == "addImage") {
                     var file = JSON.parse(last.content);
                     target.api.addImage(file.fileName, file.fileContent);
+                } else if (last.type == "addSlide") {
+                	target.api.handleSlideAction(last.type, last.content);
+                } else if (last.type == "removeSlide") {
+                	target.api.handleSlideAction(last.type, last.content);
+                	console.log("handle slide delete")
+                } else if (last.type == "selectSlide") {
+                	target.api.selectSlide(last.content);
                 }
             }
         };
