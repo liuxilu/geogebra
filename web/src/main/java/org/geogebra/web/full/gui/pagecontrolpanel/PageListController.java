@@ -459,12 +459,7 @@ public class PageListController implements PageListControllerInterface,
 		}
 	}
 
-	/**
-	 * load existing page
-	 * 
-	 * @param index
-	 *            index of page to load
-	 */
+	@Override
 	public void loadPage(int index) {
 		savePreviewCard(selectedCard);
 		loadSlide(index);
@@ -499,6 +494,8 @@ public class PageListController implements PageListControllerInterface,
 		loadSlide(pageIdx);
 		if (select) {
 			setCardSelected(pageIdx);
+			app.dispatchEvent(new Event(EventType.SELECT_SLIDE,
+					null, pageIdx + ""));
 		}
 	}
 
@@ -542,7 +539,6 @@ public class PageListController implements PageListControllerInterface,
 			event.stopPropagation();
 			listener.getScrollPanel().setTouchScrollingDisabled(true);
 		}
-			 
 	}
 
 	@Override
@@ -618,7 +614,6 @@ public class PageListController implements PageListControllerInterface,
 			if (file.isEmpty()) {
 				// new file
 				app.loadEmptySlide();
-
 			} else {
 				String perspXML = app.getGgbApi().getPerspectiveXML();
 				// load last status of file

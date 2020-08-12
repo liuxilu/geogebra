@@ -1105,4 +1105,17 @@ public interface JavaScriptAPI {
 	 * For autonomous drawing, the logged result has to be copied into the coords.json file.
 	 */
 	void endDrawRecordingAndLogResults();
+
+	/**
+	 * add/delete/copy/paste slide actions
+	 * @param eventType - event type (add, delete, etc.)
+	 * @param pageIdx - page index
+	 */
+	void handleSlideAction(String eventType, String pageIdx);
+
+	/**
+	 * select slide
+	 * @param pageIdx - page index
+	 */
+	void selectSlide(String pageIdx);
 }

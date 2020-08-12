@@ -1,5 +1,7 @@
 package org.geogebra.web.full.gui.pagecontrolpanel;
 
+import org.geogebra.common.plugin.Event;
+import org.geogebra.common.plugin.EventType;
 import org.geogebra.common.util.StringUtil;
 import org.geogebra.web.full.css.MaterialDesignResources;
 import org.geogebra.web.full.gui.util.ContextMenuButtonCard;
@@ -9,9 +11,6 @@ import org.geogebra.web.html5.main.AppW;
 
 /**
  * Context Menu of Page Preview Cards
- * 
- * @author Alicia Hofstaetter
- *
  */
 public class ContextMenuButtonPreviewCard extends ContextMenuButtonCard {
 
@@ -67,6 +66,8 @@ public class ContextMenuButtonPreviewCard extends ContextMenuButtonCard {
 	private void onDelete() {
 		hide();
 		frame.getPageControlPanel().removePage(card.getPageIndex());
+		app.dispatchEvent(new Event(EventType.REMOVE_SLIDE, null,
+				card.getPageIndex() + ""));
 	}
 
 	/**

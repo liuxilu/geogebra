@@ -72,6 +72,14 @@ public interface PageListControllerInterface {
 	void setActiveSlide(String slideID);
 
 	/**
+	 * load existing page
+	 *
+	 * @param index
+	 *            index of page to load
+	 */
+	void loadPage(int index);
+
+	/**
 	 * Move source slide to target index
 	 * 
 	 * @param i

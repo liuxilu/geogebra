@@ -22,6 +22,7 @@ import org.geogebra.common.main.App.ExportType;
 import org.geogebra.common.main.App.InputPosition;
 import org.geogebra.common.main.Localization;
 import org.geogebra.common.main.OpenFileListener;
+import org.geogebra.common.plugin.EventType;
 import org.geogebra.common.plugin.GgbAPI;
 import org.geogebra.common.util.AsyncOperation;
 import org.geogebra.common.util.StringUtil;
@@ -1474,5 +1475,39 @@ public class GgbAPIW extends GgbAPI {
 	@Override
 	public void newConstruction() {
 		((AppW) app).tryLoadTemplatesOnFileNew();
+	}
+
+	@Override
+	public void handleSlideAction(String eventType, String pageIdx) {
+		EventType event = null;
+		//int page = pageIdx == "undefined" ? null : Integer.parseInt(pageIdx);
+		String[] args = new String[] {};
+		switch (eventType) {
+			case "addSlide":
+				event = EventType.ADD_SLIDE;
+				break;
+
+			case "removeSlide":
+				event = EventType.REMOVE_SLIDE;
+				args = pageIdx != "undefined" ? new String[] { pageIdx }
+						: new String[] {};
+				break;
+
+			default:
+				Log.error("No event type sent");
+				break;
+		}
+		if (event != null) {
+			((AppW) app).getPageController().executeAction(event,
+					null, args);
+		}
+	}
+
+	@Override
+	public void selectSlide(String pageIdx) {
+		int page = pageIdx == "undefined" ? -1 : Integer.parseInt(pageIdx);
+		if (page > -1) {
+			((AppW) app).getPageController().loadPage(page);
+		}
 	}
 }
