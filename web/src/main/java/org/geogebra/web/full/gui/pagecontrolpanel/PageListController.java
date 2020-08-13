@@ -494,8 +494,8 @@ public class PageListController implements PageListControllerInterface,
 		loadSlide(pageIdx);
 		if (select) {
 			setCardSelected(pageIdx);
-			app.dispatchEvent(new Event(EventType.SELECT_SLIDE,
-					null, pageIdx + ""));
+			/*app.dispatchEvent(new Event(EventType.SELECT_SLIDE,
+					null, pageIdx + ""));*/
 		}
 	}
 

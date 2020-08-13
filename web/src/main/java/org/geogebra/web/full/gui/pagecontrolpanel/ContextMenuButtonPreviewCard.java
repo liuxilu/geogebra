@@ -65,9 +65,9 @@ public class ContextMenuButtonPreviewCard extends ContextMenuButtonCard {
 	 */
 	private void onDelete() {
 		hide();
-		frame.getPageControlPanel().removePage(card.getPageIndex());
 		app.dispatchEvent(new Event(EventType.REMOVE_SLIDE, null,
 				card.getPageIndex() + ""));
+		frame.getPageControlPanel().removePage(card.getPageIndex());
 	}
 
 	/**

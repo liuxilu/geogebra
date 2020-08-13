@@ -220,7 +220,7 @@
 
         this.dispatch = function(last) {
             if (last && last.client != this.clientId) {
-                target = last.embedLabel ? this.embeds[last.embedLabel] : this;
+                target = last.embedLabel ? this.embeds[last.embedLabel] : this;https://www.pierreseliteperformance.com/
                 if (last.type == "evalXML") {
                     target.evalXML(last.content);
                 } else if (last.type == "setXML") {
@@ -236,14 +236,11 @@
                 } else if (last.type == "addImage") {
                     var file = JSON.parse(last.content);
                     target.api.addImage(file.fileName, file.fileContent);
-                } else if (last.type == "addSlide") {
+                } else if (last.type == "addSlide"
+                	|| last.type == "removeSlide") {
                 	target.unregisterListeners();
                 	target.api.handleSlideAction(last.type, last.content);
 					target.registerListeners();
-                } else if (last.type == "removeSlide") {
-               		target.unregisterListeners();
-                	target.api.handleSlideAction(last.type, last.content);
-                	target.registerListeners();
                 } else if (last.type == "selectSlide") {
                 	target.unregisterListeners();
                 	target.api.selectSlide(last.content);
