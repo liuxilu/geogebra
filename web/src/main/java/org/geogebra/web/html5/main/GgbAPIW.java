@@ -1489,7 +1489,7 @@ public class GgbAPIW extends GgbAPI {
 
 			case "removeSlide":
 				event = EventType.REMOVE_SLIDE;
-				args = pageIdx != "undefined" ? new String[] { pageIdx }
+				args = !"undefined".equals(pageIdx) ? new String[] { pageIdx }
 						: new String[] {};
 				break;
 
@@ -1505,7 +1505,7 @@ public class GgbAPIW extends GgbAPI {
 
 	@Override
 	public void selectSlide(String pageIdx) {
-		int page = pageIdx == "undefined" ? -1 : Integer.parseInt(pageIdx);
+		int page = "undefined".equals(pageIdx) ? -1 : Integer.parseInt(pageIdx);
 		if (page > -1) {
 			((AppW) app).getPageController().loadPage(page);
 		}
