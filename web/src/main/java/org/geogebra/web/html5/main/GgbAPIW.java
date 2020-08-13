@@ -1508,6 +1508,7 @@ public class GgbAPIW extends GgbAPI {
 		int page = "undefined".equals(pageIdx) ? -1 : Integer.parseInt(pageIdx);
 		if (page > -1) {
 			((AppW) app).getPageController().loadPage(page);
+			((AppW) app).getPageController().updatePreviewImage();
 		}
 	}
 }

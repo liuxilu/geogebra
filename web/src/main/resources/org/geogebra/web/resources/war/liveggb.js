@@ -257,6 +257,9 @@
             mainSession.dispatch(last);
         },
         start: function(api, callback) {
+           if (mainSession.api) {
+               return;
+           }
            mainSession.api = api;
            mainSession.eventCallback = callback;
            mainSession.registerListeners();
