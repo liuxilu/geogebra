@@ -220,7 +220,7 @@
 
         this.dispatch = function(last) {
             if (last && last.client != this.clientId) {
-                target = last.embedLabel ? this.embeds[last.embedLabel] : this;https://www.pierreseliteperformance.com/
+                target = last.embedLabel ? this.embeds[last.embedLabel] : this;
                 if (last.type == "evalXML") {
                     target.evalXML(last.content);
                 } else if (last.type == "setXML") {
