@@ -98,9 +98,9 @@ public class PageListPanel
 		plusButton.setStyleName("mowFloatingButton");
 		plusButton.addStyleName("mowPlusButton");
 		plusButton.addFastClickHandler(source -> {
-			loadNewPage(false);
 			app.dispatchEvent(new Event(EventType.ADD_SLIDE,
 					null, null));
+			loadNewPage(false);
 		});
 		add(plusButton);
 		showPlusButton(false);

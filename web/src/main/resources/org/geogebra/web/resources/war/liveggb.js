@@ -237,12 +237,17 @@
                     var file = JSON.parse(last.content);
                     target.api.addImage(file.fileName, file.fileContent);
                 } else if (last.type == "addSlide") {
+                	target.unregisterListeners();
                 	target.api.handleSlideAction(last.type, last.content);
+					target.registerListeners();
                 } else if (last.type == "removeSlide") {
+               		target.unregisterListeners();
                 	target.api.handleSlideAction(last.type, last.content);
-                	console.log("handle slide delete")
+                	target.registerListeners();
                 } else if (last.type == "selectSlide") {
+                	target.unregisterListeners();
                 	target.api.selectSlide(last.content);
+                	target.registerListeners();
                 }
             }
         };
