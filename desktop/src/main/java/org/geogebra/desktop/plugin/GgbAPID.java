@@ -233,6 +233,11 @@ public class GgbAPID extends GgbAPIJre {
 	}
 
 	@Override
+	public void previewRefresh() {
+		// stub
+	}
+
+	@Override
 	protected void exportPNGClipboard(boolean transparent, int DPI,
 			double exportScale, EuclidianView ev) {
 		// more control but doesn't paste into eg Paint, Google Docs

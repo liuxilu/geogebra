@@ -441,6 +441,11 @@ public class AppCommon extends App {
 			}
 
 			@Override
+			public void previewRefresh() {
+				// stub
+			}
+
+			@Override
 			protected void exportPNGClipboard(boolean transparent, int DPI,
 					double exportScale, EuclidianView ev) {
 				// stub
