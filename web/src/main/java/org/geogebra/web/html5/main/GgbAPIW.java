@@ -1493,6 +1493,11 @@ public class GgbAPIW extends GgbAPI {
 						: new String[] {};
 				break;
 
+			case "moveSlide":
+				event = EventType.MOVE_SLIDE;
+				args = pageIdx.split(",");
+				break;
+
 			default:
 				Log.error("No event type sent");
 				break;

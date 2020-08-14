@@ -169,22 +169,14 @@
                     break;
 
 				case "addSlide":
-					console.log(event[0], "add new slide");
-					this.sendEvent("addSlide");
+				case "previewRefresh":
+					this.sendEvent(event[0]);
 					break;
 
                 case "removeSlide":
-					console.log(event[0], "page " + event[2] + " deleted");
-					this.sendEvent("removeSlide", event[2]);
-					break;
-
-				case "selectSlide":
-					console.log(event[0], "select page " + event[2]);
-					this.sendEvent("selectSlide", event[2]);
-					break;
-
-				case "previewRefresh":
-					this.sendEvent("previewRefresh");
+                case "moveSlide":
+                case "selectSlide":
+					this.sendEvent(event[0], event[2]);
 					break;
 
                 default:
@@ -226,7 +218,8 @@
                     var file = JSON.parse(last.content);
                     target.api.addImage(file.fileName, file.fileContent);
                 } else if (last.type == "addSlide"
-                	|| last.type == "removeSlide") {
+                	|| last.type == "removeSlide"
+                	|| last.type == "moveSlide") {
                 	target.unregisterListeners();
                 	target.api.handleSlideAction(last.type, last.content);
 					target.registerListeners();
