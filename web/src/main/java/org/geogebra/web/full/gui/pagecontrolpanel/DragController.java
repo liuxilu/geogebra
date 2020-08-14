@@ -608,7 +608,7 @@ class DragController {
 		dropAnimTimer.cancel();
 		if (dragged.index() >= 0) {
 			app.dispatchEvent(new Event(EventType.MOVE_SLIDE, null,
-					dragged.index() + "," +dragged.getDropIndex() + ""));
+					dragged.index() + "," + dragged.getDropIndex() + ""));
 			cards.reorder(dragged.index(), dragged.getDropIndex());
 			getListener().update();
 			cards.clickPage(dragged.index(), false);
