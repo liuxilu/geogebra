@@ -1118,4 +1118,9 @@ public interface JavaScriptAPI {
 	 * @param pageIdx - page index
 	 */
 	void selectSlide(String pageIdx);
+
+	/**
+	 * refresh slide
+	 */
+	void previewRefresh();
 }

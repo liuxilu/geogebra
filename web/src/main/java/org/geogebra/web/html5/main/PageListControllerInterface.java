@@ -113,4 +113,10 @@ public interface PageListControllerInterface {
 	 * @return base64 encoded PDF
 	 */
 	String exportPDF();
+
+	/**
+	 * @param idx
+	 *            page index
+	 */
+	void selectSlide(int idx);
 }

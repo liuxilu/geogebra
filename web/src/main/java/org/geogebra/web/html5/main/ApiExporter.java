@@ -843,6 +843,10 @@ public class ApiExporter {
 		api.selectSlide = function(pageIdx) {
 			ggbAPI.@org.geogebra.web.html5.main.GgbAPIW::selectSlide(Ljava/lang/String;)(pageIdx + "");
 		};
+
+		api.previewRefresh = function() {
+			ggbAPI.@org.geogebra.web.html5.main.GgbAPIW::previewRefresh()();
+		};
 	}-*/;
 
 	/**

@@ -500,6 +500,12 @@ public class PageListController implements PageListControllerInterface,
 	}
 
 	@Override
+	public void selectSlide(int pageIdx) {
+		loadSlide(pageIdx);
+		setCardSelected(pageIdx);
+	}
+
+	@Override
 	public void onMouseDown(MouseDownEvent event) {
 		if (Browser.isMobile()) {
 			return;

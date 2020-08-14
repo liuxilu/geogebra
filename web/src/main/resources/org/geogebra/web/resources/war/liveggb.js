@@ -112,6 +112,7 @@
             } else {
                 this.sendEvent("evalXML", xml);
             }
+            this.sendEvent("previewRefresh");
             window.setTimeout(function(){
                 that.initEmbed(label);
             },500); //TODO avoid timeout
@@ -182,6 +183,10 @@
 					this.sendEvent("selectSlide", event[2]);
 					break;
 
+				case "previewRefresh":
+					this.sendEvent("previewRefresh");
+					break;
+
                 default:
                     // console.log("unhandled event ", event[0], event);
             }
@@ -228,6 +233,10 @@
                 } else if (last.type == "selectSlide") {
                 	target.unregisterListeners();
                 	target.api.selectSlide(last.content);
+                	target.registerListeners();
+                } else if (last.type == "previewRefresh") {
+                	target.unregisterListeners();
+                	target.api.previewRefresh();
                 	target.registerListeners();
                 }
             }
